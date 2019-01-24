@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Kind</key>
+	<string>Xcode.Xcode3.ProjectTemplateUnitKind</string>
+	<key>Identifier</key>
+	<string>com.tomawesome.dt.unit.iossecurity.pageBasedApplication</string>
+	<key>Ancestors</key>
+	<array>
+		<string>com.tomawesome.dt.unit.iossecurity.storyboardApplication</string>
+	</array>
+	<key>Concrete</key>
+	<true/>
+	<key>Description</key>
+	<string>This template provides a starting point for a page-based application that uses a page view controller. </string>
+	<key>SortOrder</key>
+	<integer>21</integer>
+	<key>Options</key>
+	<array>
+		<dict>
+			<key>Identifier</key>
+			<string>languageChoice</string>
+			<key>Units</key>
+			<dict>
+				<key>Objective-C</key>
+				<dict>
+					<key>Nodes</key>
+					<array>
+						<string>RootViewController.h:comments</string>
+						<string>RootViewController.h:imports:importCocoa</string>
+						<string>RootViewController.h:class</string>
+						<string>RootViewController.h:interface(RootViewController : UIViewController &lt;UIPageViewControllerDelegate&gt;)</string>
+						<string>RootViewController.h:interface:pageViewController</string>
+						<string>RootViewController.m:comments</string>
+						<string>RootViewController.m:imports:importHeader:RootViewController.h</string>
+						<string>RootViewController.m:imports:importHeader:ModelController.h</string>
+						<string>RootViewController.m:imports:importHeader:DataViewController.h</string>
+						<string>RootViewController.m:extension:modelController</string>
+						<string>RootViewController.m:implementation:synthesize:modelController = _modelController</string>
+						<string>RootViewController.m:implementation:methods:viewDidLoad(- (void\)viewDidLoad)</string>
+						<string>RootViewController.m:implementation:methods:viewDidLoad:super</string>
+						<string>RootViewController.m:implementation:methods:viewDidLoad:setup:inset</string>
+						<string>RootViewController.m:implementation:methods:modelController(- (ModelController *\)modelController)</string>
+						<string>RootViewController.m:implementation:methods:modelController:body</string>
+						<string>RootViewController.m:implementation:methods:spineLocationForInterfaceOrientation(#pragma mark - UIPageViewController delegate methods
+
+- (UIPageViewControllerSpineLocation\)pageViewController:(UIPageViewController *\)pageViewController spineLocationForInterfaceOrientation:(UIInterfaceOrientation\)orientation)</string>
+						<string>RootViewController.m:implementation:methods:spineLocationForInterfaceOrientation:body</string>
+						<string>DataViewController.h:comments</string>
+						<string>DataViewController.h:imports:importCocoa</string>
+						<string>DataViewController.h:class</string>
+						<string>DataViewController.h:interface(DataViewController : UIViewController)</string>
+						<string>DataViewController.h:interface:dataLabel</string>
+						<string>DataViewController.h:interface:dataObject</string>
+						<string>DataViewController.m:comments</string>
+						<string>DataViewController.m:imports:importHeader:DataViewController.h</string>
+						<string>DataViewController.m:extension</string>
+						<string>DataViewController.m:implementation:methods:viewDidLoad(- (void\)viewDidLoad)</string>
+						<string>DataViewController.m:implementation:methods:viewDidLoad:super</string>
+						<string>DataViewController.m:implementation:methods:viewWillAppear(- (void\)viewWillAppear:(BOOL\)animated)</string>
+						<string>DataViewController.m:implementation:methods:viewWillAppear:body</string>
+						<string>ModelController.h:comments</string>
+						<string>ModelController.h:imports:importCocoa</string>
+						<string>ModelController.h:class:DataViewController</string>
+						<string>ModelController.h:interface(ModelController : NSObject &lt;UIPageViewControllerDataSource&gt;)</string>
+						<string>ModelController.h:interface:viewControllerAtIndex</string>
+						<string>ModelController.h:interface:indexOfViewController</string>
+						<string>ModelController.m:comments</string>
+						<string>ModelController.m:imports:importHeader:ModelController.h</string>
+						<string>ModelController.m:imports:importHeader:DataViewController.h</string>
+						<string>ModelController.m:descriptionComment</string>
+						<string>ModelController.m:extension:pageData</string>
+						<string>ModelController.m:implementation:methods:init:setup</string>
+						<string>ModelController.m:implementation:methods:viewControllerAtIndex(- (DataViewController *\)viewControllerAtIndex:(NSUInteger\)index storyboard:(UIStoryboard *\)storyboard)</string>
+						<string>ModelController.m:implementation:methods:viewControllerAtIndex:body</string>
+						<string>ModelController.m:implementation:methods:indexOfViewController(- (NSUInteger\)indexOfViewController:(DataViewController *\)viewController)</string>
+						<string>ModelController.m:implementation:methods:indexOfViewController:body</string>
+						<string>ModelController.m:implementation:pageViewControllerDataSource</string>
+					</array>
+					<key>Definitions</key>
+					<dict>
+						<key>RootViewController.h:interface:pageViewController</key>
+						<string>@property (strong, nonatomic) UIPageViewController *pageViewController;</string>
+						<key>RootViewController.m:extension:modelController</key>
+						<string>@property (readonly, strong, nonatomic) ModelController *modelController;</string>
+						<key>RootViewController.m:implementation:methods:viewDidLoad:setup</key>
+						<dict>
+							<key>Beginning</key>
+							<string>// Configure the page view controller and add it as a child view controller.
+self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStylePageCurl navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
+self.pageViewController.delegate = self;
+
+DataViewController *startingViewController = [self.modelController viewControllerAtIndex:0 storyboard:self.storyboard];
+NSArray *viewControllers = @[startingViewController];
+[self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+
+self.pageViewController.dataSource = self.modelController;
+
+[self addChildViewController:self.pageViewController];
+[self.view addSubview:self.pageViewController.view];
+
+// Set the page view controller&apos;s bounds using an inset rect so that self&apos;s view is visible around the edges of the pages.
+CGRect pageViewRect = self.view.bounds;</string>
+							<key>End</key>
+							<string>self.pageViewController.view.frame = pageViewRect;
+
+[self.pageViewController didMoveToParentViewController:self];</string>
+						</dict>
+						<key>RootViewController.m:implementation:methods:modelController:body</key>
+						<string>// Return the model controller object, creating it if necessary.
+// In more complex implementations, the model controller may be passed to the view controller.
+if (!_modelController) {
+    _modelController = [[ModelController alloc] init];
+}
+return _modelController;</string>
+						<key>DataViewController.h:interface:dataLabel</key>
+						<string>@property (strong, nonatomic) IBOutlet UILabel *dataLabel;</string>
+						<key>DataViewController.h:interface:dataObject</key>
+						<string>@property (strong, nonatomic) id dataObject;</string>
+						<key>DataViewController.m:implementation:methods:viewWillAppear:body</key>
+						<string>[super viewWillAppear:animated];
+self.dataLabel.text = [self.dataObject description];
+</string>
+						<key>ModelController.h:interface:viewControllerAtIndex</key>
+						<string>- (DataViewController *)viewControllerAtIndex:(NSUInteger)index storyboard:(UIStoryboard *)storyboard;</string>
+						<key>ModelController.h:interface:indexOfViewController</key>
+						<string>- (NSUInteger)indexOfViewController:(DataViewController *)viewController;</string>
+						<key>ModelController.m:descriptionComment</key>
+						<string>/*
+ A controller object that manages a simple model -- a collection of month names.
+ 
+ The controller serves as the data source for the page view controller; it therefore implements pageViewController:viewControllerBeforeViewController: and pageViewController:viewControllerAfterViewController:.
+ It also implements a custom method, viewControllerAtIndex: which is useful in the implementation of the data source methods, and in the initial configuration of the application.
+ 
+ There is no need to actually create view controllers for each page in advance -- indeed doing so incurs unnecessary overhead. Given the data model, these methods create, configure, and return a new view controller on demand.
+ */
+
+</string>
+						<key>ModelController.m:extension:pageData</key>
+						<string>@property (readonly, strong, nonatomic) NSArray *pageData;</string>
+						<key>ModelController.m:implementation:methods:init:setup</key>
+						<string>// Create the data model.
+NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+_pageData = [[dateFormatter monthSymbols] copy];</string>
+						<key>ModelController.m:implementation:methods:viewControllerAtIndex:body</key>
+						<string>// Return the data view controller for the given index.
+if (([self.pageData count] == 0) || (index &gt;= [self.pageData count])) {
+    return nil;
+}
+
+// Create a new view controller and pass suitable data.
+DataViewController *dataViewController = [storyboard instantiateViewControllerWithIdentifier:@&quot;DataViewController&quot;];
+dataViewController.dataObject = self.pageData[index];
+return dataViewController;
+</string>
+						<key>ModelController.m:implementation:methods:indexOfViewController:body</key>
+						<string>// Return the index of the given data view controller.
+// For simplicity, this implementation uses a static array of model objects and the view controller stores the model object; you can therefore use the model object to identify the index.
+return [self.pageData indexOfObject:viewController.dataObject];
+</string>
+						<key>ModelController.m:implementation:pageViewControllerDataSource</key>
+						<string>#pragma mark - Page View Controller Data Source
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
+{
+    NSUInteger index = [self indexOfViewController:(DataViewController *)viewController];
+    if ((index == 0) || (index == NSNotFound)) {
+        return nil;
+    }
+    
+    index--;
+    return [self viewControllerAtIndex:index storyboard:viewController.storyboard];
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
+{
+    NSUInteger index = [self indexOfViewController:(DataViewController *)viewController];
+    if (index == NSNotFound) {
+        return nil;
+    }
+    
+    index++;
+    if (index == [self.pageData count]) {
+        return nil;
+    }
+    return [self viewControllerAtIndex:index storyboard:viewController.storyboard];
+}
+</string>
+						<key>RootViewController.m:implementation:methods:viewDidLoad:setup:inset</key>
+						<string>if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+    pageViewRect = CGRectInset(pageViewRect, 40.0, 40.0);
+}</string>
+						<key>RootViewController.m:implementation:methods:spineLocationForInterfaceOrientation:body</key>
+						<string>if (UIInterfaceOrientationIsPortrait(orientation) || ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)) {
+    // In portrait orientation or on iPhone: Set the spine position to &quot;min&quot; and the page view controller&apos;s view controllers array to contain just one view controller. Setting the spine position to &apos;UIPageViewControllerSpineLocationMid&apos; in landscape orientation sets the doubleSided property to YES, so set it to NO here.
+    
+    UIViewController *currentViewController = self.pageViewController.viewControllers[0];
+    NSArray *viewControllers = @[currentViewController];
+    [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    
+    self.pageViewController.doubleSided = NO;
+    return UIPageViewControllerSpineLocationMin;
+}
+
+// In landscape orientation: Set set the spine location to &quot;mid&quot; and the page view controller&apos;s view controllers array to contain two view controllers. If the current page is even, set it to contain the current and next view controllers; if it is odd, set the array to contain the previous and current view controllers.
+DataViewController *currentViewController = self.pageViewController.viewControllers[0];
+NSArray *viewControllers = nil;
+
+NSUInteger indexOfCurrentViewController = [self.modelController indexOfViewController:currentViewController];
+if (indexOfCurrentViewController == 0 || indexOfCurrentViewController % 2 == 0) {
+    UIViewController *nextViewController = [self.modelController pageViewController:self.pageViewController viewControllerAfterViewController:currentViewController];
+    viewControllers = @[currentViewController, nextViewController];
+} else {
+    UIViewController *previousViewController = [self.modelController pageViewController:self.pageViewController viewControllerBeforeViewController:currentViewController];
+    viewControllers = @[previousViewController, currentViewController];
+}
+[self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+
+
+return UIPageViewControllerSpineLocationMid;
+</string>
+					</dict>
+				</dict>
+				<key>Swift</key>
+				<dict>
+					<key>Nodes</key>
+					<array>
+						<string>RootViewController.swift:comments</string>
+						<string>RootViewController.swift:imports:importCocoa</string>
+						<string>RootViewController.swift:implementation(RootViewController: UIViewController, UIPageViewControllerDelegate)</string>
+						<string>RootViewController.swift:implementation:properties:pageViewController</string>
+						<string>RootViewController.swift:implementation:methods:viewDidLoad(override func viewDidLoad(\))</string>
+						<string>RootViewController.swift:implementation:methods:viewDidLoad:super</string>
+						<string>RootViewController.swift:implementation:methods:viewDidLoad:setup:inset</string>
+						<string>RootViewController.swift:implementation:methods:modelController(var modelController: ModelController)</string>
+						<string>RootViewController.swift:implementation:methods:modelController:body</string>
+						<string>RootViewController.swift:implementation:methods:_modelController</string>
+						<string>RootViewController.swift:implementation:methods:spineLocationForInterfaceOrientation(// MARK: - UIPageViewController delegate methods
+
+func pageViewController(_ pageViewController: UIPageViewController, spineLocationFor orientation: UIInterfaceOrientation\) -&gt; UIPageViewController.SpineLocation)</string>
+						<string>RootViewController.swift:implementation:methods:spineLocationForInterfaceOrientation:body</string>
+						<string>DataViewController.swift:comments</string>
+						<string>DataViewController.swift:imports:importCocoa</string>
+						<string>DataViewController.swift:implementation(DataViewController: UIViewController)</string>
+						<string>DataViewController.swift:implementation:properties:dataLabel</string>
+						<string>DataViewController.swift:implementation:properties:dataObject</string>
+						<string>DataViewController.swift:implementation:methods:viewDidLoad(override func viewDidLoad(\))</string>
+						<string>DataViewController.swift:implementation:methods:viewDidLoad:super</string>
+						<string>DataViewController.swift:implementation:methods:viewWillAppear(override func viewWillAppear(_ animated: Bool\))</string>
+						<string>DataViewController.swift:implementation:methods:viewWillAppear:body</string>
+						<string>ModelController.swift:comments</string>
+						<string>ModelController.swift:imports:importCocoa</string>
+						<string>ModelController.swift:descriptionComment</string>
+						<string>ModelController.swift:implementation(ModelController: NSObject, UIPageViewControllerDataSource)</string>
+						<string>ModelController.swift:implementation:properties:pageData</string>
+						<string>ModelController.swift:implementation:methods:init:setup</string>
+						<string>ModelController.swift:implementation:methods:viewControllerAtIndex(func viewControllerAtIndex(_ index: Int, storyboard: UIStoryboard\) -&gt; DataViewController?)</string>
+						<string>ModelController.swift:implementation:methods:viewControllerAtIndex:body</string>
+						<string>ModelController.swift:implementation:methods:indexOfViewController(func indexOfViewController(_ viewController: DataViewController\) -&gt; Int)</string>
+						<string>ModelController.swift:implementation:methods:indexOfViewController:body</string>
+						<string>ModelController.swift:implementation:pageViewControllerDataSource</string>
+					</array>
+					<key>Definitions</key>
+					<dict>
+						<key>RootViewController.swift:implementation:properties:pageViewController</key>
+						<string>var pageViewController: UIPageViewController?</string>
+						<key>RootViewController.swift:implementation:methods:viewDidLoad:setup</key>
+						<dict>
+							<key>Beginning</key>
+							<string>// Configure the page view controller and add it as a child view controller.
+self.pageViewController = UIPageViewController(transitionStyle: .pageCurl, navigationOrientation: .horizontal, options: nil)
+self.pageViewController!.delegate = self
+
+let startingViewController: DataViewController = self.modelController.viewControllerAtIndex(0, storyboard: self.storyboard!)!
+let viewControllers = [startingViewController]
+self.pageViewController!.setViewControllers(viewControllers, direction: .forward, animated: false, completion: {done in })
+
+self.pageViewController!.dataSource = self.modelController
+
+self.addChild(self.pageViewController!)
+self.view.addSubview(self.pageViewController!.view)
+
+// Set the page view controller&apos;s bounds using an inset rect so that self&apos;s view is visible around the edges of the pages.
+var pageViewRect = self.view.bounds</string>
+							<key>End</key>
+							<string>self.pageViewController!.view.frame = pageViewRect
+
+self.pageViewController!.didMove(toParent: self)</string>
+						</dict>
+						<key>RootViewController.swift:implementation:methods:modelController:body</key>
+						<string>// Return the model controller object, creating it if necessary.
+// In more complex implementations, the model controller may be passed to the view controller.
+if _modelController == nil {
+    _modelController = ModelController()
+}
+return _modelController!</string>
+						<key>RootViewController.swift:implementation:methods:_modelController</key>
+						<string>var _modelController: ModelController? = nil
+
+</string>
+						<key>DataViewController.swift:implementation:properties:dataLabel</key>
+						<string>@IBOutlet weak var dataLabel: UILabel!</string>
+						<key>DataViewController.swift:implementation:properties:dataObject</key>
+						<string>var dataObject: String = &quot;&quot;</string>
+						<key>DataViewController.swift:implementation:methods:viewWillAppear:body</key>
+						<string>super.viewWillAppear(animated)
+self.dataLabel!.text = dataObject
+</string>
+						<key>ModelController.swift:descriptionComment</key>
+						<string>/*
+ A controller object that manages a simple model -- a collection of month names.
+ 
+ The controller serves as the data source for the page view controller; it therefore implements pageViewController:viewControllerBeforeViewController: and pageViewController:viewControllerAfterViewController:.
+ It also implements a custom method, viewControllerAtIndex: which is useful in the implementation of the data source methods, and in the initial configuration of the application.
+ 
+ There is no need to actually create view controllers for each page in advance -- indeed doing so incurs unnecessary overhead. Given the data model, these methods create, configure, and return a new view controller on demand.
+ */
+
+</string>
+						<key>ModelController.swift:implementation:properties:pageData</key>
+						<string>var pageData: [String] = []</string>
+						<key>ModelController.swift:implementation:methods:init:setup</key>
+						<string>// Create the data model.
+let dateFormatter = DateFormatter()
+pageData = dateFormatter.monthSymbols</string>
+						<key>ModelController.swift:implementation:methods:viewControllerAtIndex:body</key>
+						<string>// Return the data view controller for the given index.
+if (self.pageData.count == 0) || (index &gt;= self.pageData.count) {
+    return nil
+}
+
+// Create a new view controller and pass suitable data.
+let dataViewController = storyboard.instantiateViewController(withIdentifier: &quot;DataViewController&quot;) as! DataViewController
+dataViewController.dataObject = self.pageData[index]
+return dataViewController
+</string>
+						<key>ModelController.swift:implementation:methods:indexOfViewController:body</key>
+						<string>// Return the index of the given data view controller.
+// For simplicity, this implementation uses a static array of model objects and the view controller stores the model object; you can therefore use the model object to identify the index.
+return pageData.index(of: viewController.dataObject) ?? NSNotFound
+</string>
+						<key>ModelController.swift:implementation:pageViewControllerDataSource</key>
+						<string>// MARK: - Page View Controller Data Source
+
+func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -&gt; UIViewController? {
+    var index = self.indexOfViewController(viewController as! DataViewController)
+    if (index == 0) || (index == NSNotFound) {
+        return nil
+    }
+    
+    index -= 1
+    return self.viewControllerAtIndex(index, storyboard: viewController.storyboard!)
+}
+
+func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -&gt; UIViewController? {
+    var index = self.indexOfViewController(viewController as! DataViewController)
+    if index == NSNotFound {
+        return nil
+    }
+    
+    index += 1
+    if index == self.pageData.count {
+        return nil
+    }
+    return self.viewControllerAtIndex(index, storyboard: viewController.storyboard!)
+}
+</string>
+						<key>RootViewController.swift:implementation:methods:viewDidLoad:setup:inset</key>
+						<string>if UIDevice.current.userInterfaceIdiom == .pad {
+    pageViewRect = pageViewRect.insetBy(dx: 40.0, dy: 40.0)
+}</string>
+						<key>RootViewController.swift:implementation:methods:spineLocationForInterfaceOrientation:body</key>
+						<string>if (orientation == .portrait) || (orientation == .portraitUpsideDown) || (UIDevice.current.userInterfaceIdiom == .phone) {
+    // In portrait orientation or on iPhone: Set the spine position to &quot;min&quot; and the page view controller&apos;s view controllers array to contain just one view controller. Setting the spine position to &apos;UIPageViewController.SpineLocation.mid&apos; in landscape orientation sets the doubleSided property to true, so set it to false here.
+    let currentViewController = self.pageViewController!.viewControllers![0]
+    let viewControllers = [currentViewController]
+    self.pageViewController!.setViewControllers(viewControllers, direction: .forward, animated: true, completion: {done in })
+
+    self.pageViewController!.isDoubleSided = false
+    return .min
+}
+
+// In landscape orientation: Set set the spine location to &quot;mid&quot; and the page view controller&apos;s view controllers array to contain two view controllers. If the current page is even, set it to contain the current and next view controllers; if it is odd, set the array to contain the previous and current view controllers.
+let currentViewController = self.pageViewController!.viewControllers![0] as! DataViewController
+var viewControllers: [UIViewController]
+
+let indexOfCurrentViewController = self.modelController.indexOfViewController(currentViewController)
+if (indexOfCurrentViewController == 0) || (indexOfCurrentViewController % 2 == 0) {
+    let nextViewController = self.modelController.pageViewController(self.pageViewController!, viewControllerAfter: currentViewController)
+    viewControllers = [currentViewController, nextViewController!]
+} else {
+    let previousViewController = self.modelController.pageViewController(self.pageViewController!, viewControllerBefore: currentViewController)
+    viewControllers = [previousViewController!, currentViewController]
+}
+self.pageViewController!.setViewControllers(viewControllers, direction: .forward, animated: true, completion: {done in })
+
+return .mid
+</string>
+					</dict>
+				</dict>
+			</dict>
+		</dict>
+	</array>
+	<key>Definitions</key>
+	<dict>
+		<key>Base.lproj/Main.storyboard</key>
+		<dict>
+			<key>Path</key>
+			<string>Main.storyboard</string>
+			<key>SortOrder</key>
+			<integer>99</integer>
+		</dict>
+	</dict>
+</dict>
+</plist>

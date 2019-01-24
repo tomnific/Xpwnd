@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Sticker catalogs are only used in projects created with the Sticker Pack Application project template.  They contain a sticker pack and an iMessages App Icon.</string>
+	<key>Summary</key>
+	<string>A sticker catalog</string>
+	<key>Name</key>
+	<string>Sticker Catalog</string>
+	<key>MainTemplateFile</key>
+	<string>___FILENAME___.xcstickers</string>
+	<key>DefaultCompletionName</key>
+	<string>Stickers</string>
+	<key>Kind</key>
+	<string>Xcode.IDEFoundation.TextSubstitutionFileTemplateKind</string>
+</dict>
+</plist>

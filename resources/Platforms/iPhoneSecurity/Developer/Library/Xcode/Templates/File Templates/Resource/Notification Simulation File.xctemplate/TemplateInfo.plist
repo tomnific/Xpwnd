@@ -1,0 +1,12 @@
+{
+	Kind = "Xcode.IDEFoundation.TextSubstitutionFileTemplateKind";
+	Description = "Apple Push Notification Service payload in JSON format.";
+	Summary = "APNs file in JSON format for testing push notifications.";
+	MainTemplateFile = "___FILEBASENAME___.apns";
+	"DefaultCompletionName" = NotificationPayload;
+	SortOrder = 20;
+	BuildableType = None;
+	Platforms = (
+		"com.apple.platform.iphoneos",
+	);
+}
