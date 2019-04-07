@@ -1,30 +1,33 @@
 # Xpwnd
 A modded version of Xcode designed specifically anything iOS Security Related. It comes loaded with 2 supersets of the iOS SDK - one geared towards jailbreak development, the other towards iOS security research. Both also come loaded with a myriad of project templates.
-<br><br>More specifically, this repo contains a script for you to build Xpwnd youself. Doing so has 2 advnatages:
+<br><br>More specifically, this repo contains a script for you to build Xpwnd yourself. Doing so has 2 advantages:
 - I'm not distributing a massive bundle, so you can more easily verify that nothing fishy is being injected
 - Apple can't come after me for distributing a bundle that mostly resembles their copyrighted material
 
 <br>
 
 ## Building
+> Currently only tested with Xcode 10 and Xcode 10.1
+
 Simply run the script, sit back, and enter your sudo password a couple of times. The script doesn't take arguments and handles a lot of things automatically
 
-### Requirments
-1) Xcode (duh!)
-2) Mac Developer Signing Identity (can be verified with `security find-identity -v -p codesigning`)
+### Requirements
+1. Xcode (duh!)
+2. Mac Developer Signing Identity (can be verified with `security find-identity -v -p codesigning`)
+3. Approximately 30 GB of free storage (after building it only takes up 20 GB)
 
 <br>
 
 ## Pros of Xpwnd
 - Stop wasting time searching for headers or configuring custom include paths.
-- Inherent skid defence: published code can't be compiled with Xcode without major advanced reconfiguring
+- Inherent skid defense: published code can't be compiled with Xcode without major advanced reconfiguring
    - Sure, they could still install this script and build Xpwnd themselves, but with how manual everything is in Xpwnd, skids likely still couldn't compile jack squat 
 - Red is cooler than Blue
 
 <br>
 
 ## Features
-I'll fill this out more later, but the big items are SDKs (including mythical Sparse SDKs) for Jailbreak development and iOS Security Reseach.
+I'll fill this out more later, but the big items are SDKs (including mythical Sparse SDKs) for Jailbreak development and iOS Security Research.
 These are currently in beta and are ever growing. I'll maybe add a repo later that includes a script for building these individually.
 
 <br>
@@ -42,7 +45,7 @@ These are currently in beta and are ever growing. I'll maybe add a repo later th
 - Derived data is shared with Xcode
 - Process Name still appears as Xcode
 
-Other than that, it's suprisingly stable
+Other than that, it's surprisingly stable
 
 <br>
 

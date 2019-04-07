@@ -12,9 +12,9 @@ XPWND_PATH="/Applications/Xpwnd.app"
 
 # Copy Xcode to Xpwnd
 echo "Copying Xcode to Xpwnd..."
-cp -r $XCODE_PATH $XPWND_PATH
+cp -a $XCODE_PATH/. $XPWND_PATH
 
-if [ $? != 0]; then
+if [ $? != 0 ]; then
 	echo -ne "ERROR: Failed to copy Xcode to Xpwnd. \n   Please check that /Applications/Xcode.app exists and that /Applications/Xpwnd.app does not.\n"
 	exit
 fi 
@@ -119,11 +119,11 @@ echo -ne "\nXpwnd initialization complete.\n"
 echo -ne "Beginning Full Transformation To Xpwnd.\n\n"
 
 
-
+pwd 
 
 # Create iPhoneJailbreak Platform
 echo "Making iPhoneJailbreak Platform...."
-cp $XPWND_PATH/Contents/Developer/Platforms/iPhoneOS.platform $XPWND_PATH/Contents/Developer/Platforms/iPhoneJailbreak.platform
+cp -r $XPWND_PATH/Contents/Developer/Platforms/iPhoneOS.platform $XPWND_PATH/Contents/Developer/Platforms/iPhoneJailbreak.platform
 
 if [ $? != 0 ]; then
 	echo "ERROR: Could not make iPhoneJailbreak Platform."
@@ -136,19 +136,19 @@ echo "Done."
 
 # Patch iPhoneJailbreak Platform
 echo "Patching iPhoneJailbreak Platform...."
-cp ./Platforms/iPhoneJailbreak/Info.plist $XPWND_PATH/Contents/Developer/Platforms/iPhoneJailbreak.platform/Info.plist
+cp ./resources/Platforms/iPhoneJailbreak/Info.plist $XPWND_PATH/Contents/Developer/Platforms/iPhoneJailbreak.platform/Info.plist
 if [ $? != 0 ]; then
 	echo "ERROR: Could not patch iPhoneJailbreak Platform."
 	exit
 fi
 
-cp ./Platforms/iPhoneJailbreak/Developer/Library/Xcode/PrivatePlugIns/IDEiOSPlatformSupportCore.xcplugindata $XPWND_PATH/Contents/Developer/Platforms/iPhoneJailbreak.platform/Developer/Library/Xcode/PrivatePlugIns/IDEiOSPlatformSupportCore.ideplugin/Contents/Resources/IDEiOSPlatformSupportCore.xcplugindata
+cp ./resources/Platforms/iPhoneJailbreak/Developer/Library/Xcode/PrivatePlugIns/IDEiOSPlatformSupportCore.xcplugindata $XPWND_PATH/Contents/Developer/Platforms/iPhoneJailbreak.platform/Developer/Library/Xcode/PrivatePlugIns/IDEiOSPlatformSupportCore.ideplugin/Contents/Resources/IDEiOSPlatformSupportCore.xcplugindata
 if [ $? != 0 ]; then
 	echo "ERROR: Could not patch iPhoneJailbreak Platform."
 	exit
 fi
 
-cp -r ./Platforms/iPhoneJailbreak/Developer/Library/Xcode/Templates $XPWND_PATH/Contents/Developer/Platforms/iPhoneJailbreak.platform/Developer/Library/Xcode/Templates
+cp -r ./resources/Platforms/iPhoneJailbreak/Developer/Library/Xcode/Templates $XPWND_PATH/Contents/Developer/Platforms/iPhoneJailbreak.platform/Developer/Library/Xcode/Templates
 if [ $? != 0 ]; then
 	echo "ERROR: Could not patch iPhoneJailbreak Platform."
 	exit
@@ -160,7 +160,7 @@ echo "Done."
 
 # Create iPhoneSecurity Platform
 echo "Making iPhoneSecurity Platform...."
-cp $XPWND_PATH/Contents/Developer/Platforms/iPhoneOS.platform $XPWND_PATH/Contents/Developer/Platforms/iPhoneSecurity.platform
+cp -r $XPWND_PATH/Contents/Developer/Platforms/iPhoneOS.platform $XPWND_PATH/Contents/Developer/Platforms/iPhoneSecurity.platform
 
 if [ $? != 0 ]; then
 	echo "ERROR: Could not make iPhoneSecurity Platform."
@@ -173,19 +173,19 @@ echo "Done."
 
 # Patch iPhoneJailbreak Platform
 echo "Patching iPhoneSecurity Platform...."
-cp ./Platforms/iPhoneSecurity/Info.plist $XPWND_PATH/Contents/Developer/Platforms/iPhoneSecurity.platform/Info.plist
+cp ./resources/Platforms/iPhoneSecurity/Info.plist $XPWND_PATH/Contents/Developer/Platforms/iPhoneSecurity.platform/Info.plist
 if [ $? != 0 ]; then
 	echo "ERROR: Could not patch iPhoneSecurity Platform."
 	exit
 fi
 
-cp ./Platforms/iPhoneSecurity/Developer/Library/Xcode/PrivatePlugIns/IDEiOSPlatformSupportCore.xcplugindata $XPWND_PATH/Contents/Developer/Platforms/iPhoneSecurity.platform/Developer/Library/Xcode/PrivatePlugIns/IDEiOSPlatformSupportCore.ideplugin/Contents/Resources/IDEiOSPlatformSupportCore.xcplugindata
+cp ./resources/Platforms/iPhoneSecurity/Developer/Library/Xcode/PrivatePlugIns/IDEiOSPlatformSupportCore.xcplugindata $XPWND_PATH/Contents/Developer/Platforms/iPhoneSecurity.platform/Developer/Library/Xcode/PrivatePlugIns/IDEiOSPlatformSupportCore.ideplugin/Contents/Resources/IDEiOSPlatformSupportCore.xcplugindata
 if [ $? != 0 ]; then
 	echo "ERROR: Could not patch iPhoneSecurity Platform."
 	exit
 fi
 
-cp -r ./Platforms/iPhoneSecurity/Developer/Library/Xcode/Templates $XPWND_PATH/Contents/Developer/Platforms/iPhoneSecurity.platform/Developer/Library/Xcode/Templates
+cp -r ./resources/Platforms/iPhoneSecurity/Developer/Library/Xcode/Templates $XPWND_PATH/Contents/Developer/Platforms/iPhoneSecurity.platform/Developer/Library/Xcode/Templates
 if [ $? != 0 ]; then
 	echo "ERROR: Could not patch iPhoneSecurity Platform."
 	exit
@@ -240,13 +240,13 @@ echo "Done."
 
 # Patch iPhoneOS.Jailbreak SDK
 echo "Patching iPhoneOS.Jailbreak SDK..."
-cp ./SDKs/iPhoneOS.Jailbreak/SDKSettings.plist $XPWND_PATH/Contents/Developer/Platforms/iPhoneJailbreak.platform/Developer/SDKs/iPhoneOS.Jailbreak.sdk/SDKSettings.plist
+cp ./resources/SDKs/iPhoneOS.Jailbreak/SDKSettings.plist $XPWND_PATH/Contents/Developer/Platforms/iPhoneJailbreak.platform/Developer/SDKs/iPhoneOS.Jailbreak.sdk/SDKSettings.plist
 if [ $? != 0 ]; then
 	echo "ERROR: Could not patch iPhoneOS.Jailbreak SDK"
 	exit
 fi
 
-cp ./SDKs/iPhoneOS.Jailbreak/usr/lib/qilin.o $XPWND_PATH/Contents/Developer/Platforms/iPhoneJailbreak.platform/Developer/SDKs/iPhoneOS.Jailbreak.sdk/usr/lib/qilin.o
+cp ./resources/SDKs/iPhoneOS.Jailbreak/usr/lib/qilin.o $XPWND_PATH/Contents/Developer/Platforms/iPhoneJailbreak.platform/Developer/SDKs/iPhoneOS.Jailbreak.sdk/usr/lib/qilin.o
 if [ $? != 0 ]; then
 	echo "ERROR: Could not patch iPhoneOS.Jailbreak SDK"
 	exit
@@ -258,7 +258,7 @@ if [ $? != 0 ]; then
 	exit
 fi
 
-cp -r ./SDKs/iPhoneOS.Jailbreak/System/Library/Frameworks/IOKit.framework $XPWND_PATH/Contents/Developer/Platforms/iPhoneJailbreak.platform/Developer/SDKs/iPhoneOS.Jailbreak.sdk/System/Library/Frameworks/IOKit.framework
+cp -r ./resources/SDKs/iPhoneOS.Jailbreak/System/Library/Frameworks/IOKit.framework $XPWND_PATH/Contents/Developer/Platforms/iPhoneJailbreak.platform/Developer/SDKs/iPhoneOS.Jailbreak.sdk/System/Library/Frameworks/IOKit.framework
 if [ $? != 0 ]; then
 	echo "ERROR: Could not patch iPhoneOS.Jailbreak SDK"
 	exit
@@ -283,7 +283,7 @@ echo "Done."
 
 # Patch iPhoneOS.SecurityResearch SDK
 echo "Patching iPhoneOS.SecurityResearch SDK..."
-cp ./SDKs/iPhoneOS.SecurityResearch/SDKSettings.plist $XPWND_PATH/Contents/Developer/Platforms/iPhoneSecurity.platform/Developer/SDKs/iPhoneOS.SecurityResearch.sdk/SDKSettings.plist
+cp ./resources/SDKs/iPhoneOS.SecurityResearch/SDKSettings.plist $XPWND_PATH/Contents/Developer/Platforms/iPhoneSecurity.platform/Developer/SDKs/iPhoneOS.SecurityResearch.sdk/SDKSettings.plist
 if [ $? != 0 ]; then
 	echo "ERROR: Could not patch iPhoneOS.SecurityResearch SDK"
 	exit
@@ -295,7 +295,7 @@ if [ $? != 0 ]; then
 	exit
 fi
 
-cp -r ./SDKs/iPhoneOS.SecurityResearch/System/Library/Frameworks/IOKit.framework $XPWND_PATH/Contents/Developer/Platforms/iPhoneSecurity.platform/Developer/SDKs/iPhoneOS.SecurityResearch.sdk/System/Library/Frameworks/IOKit.framework
+cp -r ./resources/SDKs/iPhoneOS.SecurityResearch/System/Library/Frameworks/IOKit.framework $XPWND_PATH/Contents/Developer/Platforms/iPhoneSecurity.platform/Developer/SDKs/iPhoneOS.SecurityResearch.sdk/System/Library/Frameworks/IOKit.framework
 if [ $? != 0 ]; then
 	echo "ERROR: Could not patch iPhoneOS.SecurityResearch SDK"
 	exit
@@ -307,7 +307,7 @@ echo "Done."
 
 # Add iPhoneOS.Jailbreak Sparse SDK
 echo "Adding iPhoneOS.Jailbreak Sparse SDK..."
-cp -r ./SDKs/Sparse/iPhoneOS.Jailbreak.Sparse.sdk $XPWND_PATH/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.Jailbreak.Sparse.sdk
+cp -r ./resources/SDKs/Sparse/iPhoneOS.Jailbreak.Sparse.sdk $XPWND_PATH/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.Jailbreak.Sparse.sdk
 
 if [ $? != 0 ]; then
 	echo "ERROR: Could not add iPhoneOS.SecurityResearch SDK"
@@ -320,7 +320,7 @@ echo "Done."
 
 # Add iPhoneOS.SecurityResearch Sparse SDK
 echo "Adding iPhoneOS.SecurityResearch Sparse SDK..."
-cp -r ./SDKs/Sparse/iPhoneOS.SecurityResearch.Sparse.sdk $XPWND_PATH/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.SecurityResearch.Sparse.sdk
+cp -r ./resources/SDKs/Sparse/iPhoneOS.SecurityResearch.Sparse.sdk $XPWND_PATH/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.SecurityResearch.Sparse.sdk
 
 if [ $? != 0 ]; then
 	echo "ERROR: Could not add iPhoneOS.SecurityResearch SDK"
@@ -360,7 +360,7 @@ echo "Done."
 
 
 # Make root the owner
-echo "Returning ownership of /Applications/Xpwnd.app..."
+echo "Returning ownership of /Applications/Xpwnd.app to root..."
 sudo chown -R root:wheel $XPWND_PATH
 
 if [ $? != 0 ]; then
@@ -373,7 +373,7 @@ echo "Done."
 
 
 # Change default compiler to Xpwnd
-echo "Making Xpwnd default compiler"
+echo "Making Xpwnd the default compiler..."
 sudo xcode-select -switch $XPWND_PATH
 if [ $? != 0 ]; then
 	echo "ERROR: Could not make Xpwnd the default compiler."
