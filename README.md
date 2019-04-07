@@ -41,7 +41,6 @@ These are currently in beta and are ever growing. I'll maybe add a repo later th
 ## Bugs
 - The modern build system crashes - all projects must be manually switched to the legacy build system
 - When linking libraries, LD still searches in the iPhoneOS SDK (I think it has something to do with the `isysroot` flag)
-- iPad Simulators are still stolen by the other platforms (which are exclusively for housing the SDKs & Templates). I know how to fix it, I just gotta find the file again.
 - Derived data is shared with Xcode
 - Process Name still appears as Xcode
 
