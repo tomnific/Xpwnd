@@ -230,7 +230,7 @@ echo "Making iPhoneOS.Jailbreak SDK..."
 mv $XPWND_PATH/Contents/Developer/Platforms/iPhoneJailbreak.platform/Developer/SDKs/iPhoneOS.sdk $XPWND_PATH/Contents/Developer/Platforms/iPhoneJailbreak.platform/Developer/SDKs/iPhoneOS.Jailbreak.sdk
 
 if [ $? != 0 ]; then
-	echo "ERROR: Could not make iPhoneOS.Jailbreak SDK"
+	echo "ERROR: Could not make iPhoneOS.Jailbreak SDK."
 	exit
 fi
 echo "Done."
@@ -242,25 +242,25 @@ echo "Done."
 echo "Patching iPhoneOS.Jailbreak SDK..."
 cp ./resources/SDKs/iPhoneOS.Jailbreak/SDKSettings.plist $XPWND_PATH/Contents/Developer/Platforms/iPhoneJailbreak.platform/Developer/SDKs/iPhoneOS.Jailbreak.sdk/SDKSettings.plist
 if [ $? != 0 ]; then
-	echo "ERROR: Could not patch iPhoneOS.Jailbreak SDK"
+	echo "ERROR: Could not patch iPhoneOS.Jailbreak SDK."
 	exit
 fi
 
 cp ./resources/SDKs/iPhoneOS.Jailbreak/usr/lib/qilin.o $XPWND_PATH/Contents/Developer/Platforms/iPhoneJailbreak.platform/Developer/SDKs/iPhoneOS.Jailbreak.sdk/usr/lib/qilin.o
 if [ $? != 0 ]; then
-	echo "ERROR: Could not patch iPhoneOS.Jailbreak SDK"
+	echo "ERROR: Could not patch iPhoneOS.Jailbreak SDK."
 	exit
 fi
 
 rm -r $XPWND_PATH/Contents/Developer/Platforms/iPhoneJailbreak.platform/Developer/SDKs/iPhoneOS.Jailbreak.sdk/System/Library/Frameworks/IOKit.framework
 if [ $? != 0 ]; then
-	echo "ERROR: Could not patch iPhoneOS.Jailbreak SDK"
+	echo "ERROR: Could not patch iPhoneOS.Jailbreak SDK."
 	exit
 fi
 
 cp -r ./resources/SDKs/iPhoneOS.Jailbreak/System/Library/Frameworks/IOKit.framework $XPWND_PATH/Contents/Developer/Platforms/iPhoneJailbreak.platform/Developer/SDKs/iPhoneOS.Jailbreak.sdk/System/Library/Frameworks/IOKit.framework
 if [ $? != 0 ]; then
-	echo "ERROR: Could not patch iPhoneOS.Jailbreak SDK"
+	echo "ERROR: Could not patch iPhoneOS.Jailbreak SDK."
 	exit
 fi
 echo "Done."
@@ -273,7 +273,7 @@ echo "Making iPhoneOS.SecurityResearch SDK..."
 mv $XPWND_PATH/Contents/Developer/Platforms/iPhoneSecurity.platform/Developer/SDKs/iPhoneOS.sdk $XPWND_PATH/Contents/Developer/Platforms/iPhoneSecurity.platform/Developer/SDKs/iPhoneOS.SecurityResearch.sdk
 
 if [ $? != 0 ]; then
-	echo "ERROR: Could not make iPhoneOS.SecurityResearch SDK"
+	echo "ERROR: Could not make iPhoneOS.SecurityResearch SDK."
 	exit
 fi
 echo "Done."
@@ -285,19 +285,19 @@ echo "Done."
 echo "Patching iPhoneOS.SecurityResearch SDK..."
 cp ./resources/SDKs/iPhoneOS.SecurityResearch/SDKSettings.plist $XPWND_PATH/Contents/Developer/Platforms/iPhoneSecurity.platform/Developer/SDKs/iPhoneOS.SecurityResearch.sdk/SDKSettings.plist
 if [ $? != 0 ]; then
-	echo "ERROR: Could not patch iPhoneOS.SecurityResearch SDK"
+	echo "ERROR: Could not patch iPhoneOS.SecurityResearch SDK."
 	exit
 fi
 
 rm -r $XPWND_PATH/Contents/Developer/Platforms/iPhoneSecurity.platform/Developer/SDKs/iPhoneOS.SecurityResearch.sdk/System/Library/Frameworks/IOKit.framework
 if [ $? != 0 ]; then
-	echo "ERROR: Could not patch iPhoneOS.SecurityResearch SDK"
+	echo "ERROR: Could not patch iPhoneOS.SecurityResearch SDK."
 	exit
 fi
 
 cp -r ./resources/SDKs/iPhoneOS.SecurityResearch/System/Library/Frameworks/IOKit.framework $XPWND_PATH/Contents/Developer/Platforms/iPhoneSecurity.platform/Developer/SDKs/iPhoneOS.SecurityResearch.sdk/System/Library/Frameworks/IOKit.framework
 if [ $? != 0 ]; then
-	echo "ERROR: Could not patch iPhoneOS.SecurityResearch SDK"
+	echo "ERROR: Could not patch iPhoneOS.SecurityResearch SDK."
 	exit
 fi
 echo "Done."
@@ -310,7 +310,7 @@ echo "Adding iPhoneOS.Jailbreak Sparse SDK..."
 cp -r ./resources/SDKs/Sparse/iPhoneOS.Jailbreak.Sparse.sdk $XPWND_PATH/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.Jailbreak.Sparse.sdk
 
 if [ $? != 0 ]; then
-	echo "ERROR: Could not add iPhoneOS.SecurityResearch SDK"
+	echo "ERROR: Could not add iPhoneOS.SecurityResearch SDK."
 	exit
 fi
 echo "Done."
@@ -323,11 +323,23 @@ echo "Adding iPhoneOS.SecurityResearch Sparse SDK..."
 cp -r ./resources/SDKs/Sparse/iPhoneOS.SecurityResearch.Sparse.sdk $XPWND_PATH/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.SecurityResearch.Sparse.sdk
 
 if [ $? != 0 ]; then
-	echo "ERROR: Could not add iPhoneOS.SecurityResearch SDK"
+	echo "ERROR: Could not add iPhoneOS.SecurityResearch SDK."
 	exit
 fi
 echo "Done."
 
+
+
+
+# Clean uo
+echo "Cleaning uo..."
+rm -r $XPWND_PATH/_MASReceipt
+
+if [$? != 0 ]; then
+	echo "ERROR: Could not remove Mac App Store Receipt."
+	exit	
+fi
+echo "Done."
 
 
 # TODO: I think we're missing the xcspec or whatever it was that let us remov "iPhone" from the device list to stop device stealing
@@ -351,7 +363,7 @@ for x in `security find-identity -v -p codesigning`; do
 done)
 
 if [ $? != 0 ]; then
-	echo "ERROR: Could not codesign Xpwnd"
+	echo "ERROR: Could not codesign Xpwnd."
 	exit
 fi
 echo "Done."
