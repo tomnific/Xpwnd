@@ -1,3 +1,14 @@
+------------ Repo -----------
+• Reproduce proper licenses for headers
+
+
+
+
+-------- Build Script -------
+• Write direcly to files for moficiation rather than copy modded file (where possible)
+
+
+----------- Xpwnd -----------
 • Remove duplicate file templates
 • Default to Legacy Build System
 • Change default derived data location
