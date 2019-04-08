@@ -1,0 +1,14 @@
+• Remove duplicate file templates
+• Default to Legacy Build System
+• Change default derived data location
+• Change process name (we got this once in a very early version)
+• Either fix LD issues, or make links with explicit paths
+
+• Add tweak file templates
+• Make syntax highlighting for tweak templates
+• Add tweak project templates
+• Build with Theos via command line script that haults after Theos completes
+
+• Add Logos++ file templates
+• Add Logos++ project templates
+• Script to run Logos++ parser, then feed result into Theos script
