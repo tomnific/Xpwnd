@@ -55,6 +55,13 @@ Other than that, it's surprisingly stable
 
 <br>
 
+## Mitigations
+* **Redefinition of `OSTypes.h` and friends** &rarr; Delete `/libkern/` from the corresponding Sparse SDK; Rebuild/Relaunch (if still fails, try deleting from the full SDK instead) - then put it back
+* **Build System Crashes** &rarr; Navigate to `File ⟩ Project Settings`; Change `Build System` to `Legacy Build System`
+* **LD only searches iPhoneOS SDK** &rarr; Right click your `xcodeproj` file and select "Show Package Contents", then open `project.pbxproj` and search for the library you want to link. Change any instance of its path (there should only be one) to be the full path, rather than a relative one
+
+<br>
+
 ## Best Way To Contribute
 - If you're a jailbreak dev / security researcher, tell me what headers and libraries you commonly use so I can add them to the SDK
 - If you're a tinkerer, maybe poke around and see if you can't fix any issues and tell me what you fixed
