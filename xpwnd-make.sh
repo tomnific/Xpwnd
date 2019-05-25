@@ -233,6 +233,14 @@ if [ $? != 0 ]; then
 	echo "ERROR: Could not make iPhoneOS.Jailbreak SDK."
 	exit
 fi
+
+
+find $XPWND_PATH/Contents/Developer/Platforms/iPhoneJailbreak.platform/Developer/SDKs/ -name 'iPhoneOS[1-9]*.[1-9]*.sdk' -delete
+
+if [ $? != 0 ]; then
+	echo "ERROR: Could remove version-specific symlink to iPhoneOS.sdk."
+	exit
+fi
 echo "Done."
 
 
@@ -274,6 +282,14 @@ mv $XPWND_PATH/Contents/Developer/Platforms/iPhoneSecurity.platform/Developer/SD
 
 if [ $? != 0 ]; then
 	echo "ERROR: Could not make iPhoneOS.SecurityResearch SDK."
+	exit
+fi
+
+
+find $XPWND_PATH/Contents/Developer/Platforms/iPhoneSecurity.platform/Developer/SDKs/ -name 'iPhoneOS[1-9]*.[1-9]*.sdk' -delete
+
+if [ $? != 0 ]; then
+	echo "ERROR: Could remove version-specific symlink to iPhoneOS.sdk."
 	exit
 fi
 echo "Done."
