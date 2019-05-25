@@ -66,3 +66,14 @@ Other than that, it's surprisingly stable
 - If you're a jailbreak dev / security researcher, tell me what headers and libraries you commonly use so I can add them to the SDK
 - If you're a tinkerer, maybe poke around and see if you can't fix any issues and tell me what you fixed
 - If you're a user, tell me if you like it, what's good, what isn't good, and what issues you encounter so I can add them to the list
+
+<br>
+
+## Contact
+Please report all unlisted bugs to the "Issues" page here on GitHub. For everything else, you can contact me here: <br>
+
+Twitter: <br>
+[@tomnific](https://www.twitter.com/tomnific "Tom's Twitter") <br>
+
+Email: <br>
+[tom@southernderd.us](tom@southernderd.us "Tom's Email") <br>
