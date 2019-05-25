@@ -351,9 +351,9 @@ echo "Done."
 echo "Cleaning uo..."
 rm -r $XPWND_PATH/_MASReceipt
 
-if [$? != 0 ]; then
-	echo "ERROR: Could not remove Mac App Store Receipt."
-	exit	
+if [ $? != 0 ]; then
+	echo "ERROR: Could not remove Mac App Store Receipt. Continuing anyways..."
+	echo "   If you downloaded Xcode from developer.apple.com, then you can ignore this error."
 fi
 echo "Done."
 
