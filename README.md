@@ -8,8 +8,7 @@ A modded version of Xcode designed specifically anything iOS Security Related. I
 <br>
 
 ## Building
-> Currently only fully tested with Xcode 10 and Xcode 10.1<br>
-> Testing with Xcode 10.2.1 has begun and so far there are no issues
+> Currently only fully tested with Xcode 10 - Xcode 10.2.1<br>
 
 Simply run the script, sit back, and enter your sudo password a couple of times. The script doesn't take arguments and handles a lot of things automatically
 
