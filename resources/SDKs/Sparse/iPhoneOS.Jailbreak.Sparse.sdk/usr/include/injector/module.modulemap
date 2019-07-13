@@ -1,0 +1,12 @@
+module Injector {
+  header "inject.h"
+  link "injector"
+  export *
+  
+  module kern_funcs {
+	  header "kern_funcs.h"
+	  link "kern_funcs"
+	  export *
+  }
+}
+

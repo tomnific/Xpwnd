@@ -1,0 +1,6 @@
+module patchfinder {
+  umbrella header "patchfinder64.h"
+  link "patchfinder"
+  export *
+}
+

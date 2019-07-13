@@ -1,0 +1,6 @@
+module parameters {
+  umbrella header "parameters.h"
+  link "parameters"
+  export *
+}
+

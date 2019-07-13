@@ -1,0 +1,6 @@
+module offsets {
+  umbrella header "offsets.h"
+  link "offsets"
+  export *
+}
+

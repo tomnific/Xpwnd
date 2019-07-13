@@ -1,0 +1,6 @@
+module platform {
+  umbrella header "platform.h"
+  link "platform"
+  export *
+}
+

@@ -1,0 +1,16 @@
+module kernel_call {
+//  umbrella header "kernel_call.h"
+//  link "kernel_call"
+//  export *
+
+	header "kernel_call.h"
+	link "kernel_call"
+	export *
+
+	module kc_parameters {
+		header "kc_parameters.h"
+		link "kc_parameters"
+		export *
+	}
+}
+

@@ -1,0 +1,6 @@
+module kernel_slide {
+  umbrella header "kernel_slide.h"
+  link "kernel_slide"
+  export *
+}
+

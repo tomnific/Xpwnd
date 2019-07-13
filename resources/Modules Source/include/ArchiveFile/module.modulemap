@@ -1,0 +1,6 @@
+module ArchiveFile {
+  umbrella header "ArchiveFile.h"
+  link "archivefile"
+  export *
+}
+

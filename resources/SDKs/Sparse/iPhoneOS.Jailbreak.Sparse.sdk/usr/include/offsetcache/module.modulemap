@@ -1,0 +1,6 @@
+module offsetcache {
+  umbrella header "offsetcache.h"
+  link "offsetcache"
+  export *
+}
+

@@ -1,0 +1,6 @@
+module KernelOffsets {
+  umbrella header "KernelOffsets.h"
+  link "kerneloffsets"
+  export *
+}
+

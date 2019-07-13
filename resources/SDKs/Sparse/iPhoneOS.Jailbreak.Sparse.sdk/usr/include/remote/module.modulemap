@@ -1,0 +1,14 @@
+module remote {
+	module call {
+		header "remote_call.h"
+		link "remote_call"
+		export *
+	}
+
+	module memory {
+		header "remote_memory.h"
+		link "remote_memory"
+		export *
+	}
+}
+

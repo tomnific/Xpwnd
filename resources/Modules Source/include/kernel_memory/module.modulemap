@@ -1,0 +1,6 @@
+module kernel_memory {
+  umbrella header "kernel_memory.h"
+  link "kernel_memory"
+  export *
+}
+

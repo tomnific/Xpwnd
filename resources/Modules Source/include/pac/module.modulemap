@@ -1,0 +1,6 @@
+module pac {
+  umbrella header "pac.h"
+  link "pac"
+  export *
+}
+

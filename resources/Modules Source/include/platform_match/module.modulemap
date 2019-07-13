@@ -1,0 +1,6 @@
+module platform_match {
+  umbrella header "platform_match.h"
+  link "platform_match"
+  export *
+}
+

@@ -1,0 +1,6 @@
+module early_kalloc {
+  umbrella header "early_kalloc.h"
+  link "early_kalloc"
+  export *
+}
+

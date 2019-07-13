@@ -1,0 +1,6 @@
+module user_client {
+  umbrella header "user_client.h"
+  link "user_client"
+  export *
+}
+

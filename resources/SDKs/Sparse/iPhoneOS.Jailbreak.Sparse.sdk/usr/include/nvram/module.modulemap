@@ -1,0 +1,6 @@
+module nvram {
+  umbrella header "nvram.h"
+  link "nvram"
+  export *
+}
+

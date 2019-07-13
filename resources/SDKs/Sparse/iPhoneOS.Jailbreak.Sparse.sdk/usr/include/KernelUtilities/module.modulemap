@@ -1,0 +1,6 @@
+module KernelUtilities {
+  umbrella header "KernelUtilities.h"
+  link "kernelutilities"
+  export *
+}
+

@@ -1,0 +1,6 @@
+module kmem {
+  umbrella header "kmem.h"
+  link "kmem"
+  export *
+}
+
