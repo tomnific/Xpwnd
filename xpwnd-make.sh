@@ -254,7 +254,7 @@ if [ $? != 0 ]; then
 	exit
 fi
 
-cp ./resources/SDKs/iPhoneOS.Jailbreak/usr/lib/qilin.o $XPWND_PATH/Contents/Developer/Platforms/iPhoneJailbreak.platform/Developer/SDKs/iPhoneOS.Jailbreak.sdk/usr/lib/qilin.o
+cp -R ./resources/SDKs/iPhoneOS.Jailbreak/usr/lib/. $XPWND_PATH/Contents/Developer/Platforms/iPhoneJailbreak.platform/Developer/SDKs/iPhoneOS.Jailbreak.sdk/usr/lib/
 if [ $? != 0 ]; then
 	echo "ERROR: Could not patch iPhoneOS.Jailbreak SDK."
 	exit
