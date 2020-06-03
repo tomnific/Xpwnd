@@ -1,7 +1,4 @@
-#!/bin/bash
-
-
-
+# !/bin/bash
 
 
 XCODE_PATH="/Applications/Xcode.app"
@@ -49,12 +46,28 @@ echo "Done."
 
 
 
-# Patch Info.plist (let's maybe find a way of editing a specifc line?)
+# Patch Info.plist
 echo "Patching Info.plist..."
-cp ./resources/Info.plist $XPWND_PATH/Contents/Info.plist
+plutil -replace "CFBundleIconFile" -string "Xpwnd" $XPWND_PATH/Contents/Info.plist 
+plutil -replace "CFBundleName" -string "Xpwnd" $XPWND_PATH/Contents/Info.plist 
+plutil -replace "CFBundleIdentifier" -string "com.tomawesome.dt.Xpwnd" $XPWND_PATH/Contents/Info.plist 
+plutil -replace "CFBundleExecutable" -string "Xpwnd" $XPWND_PATH/Contents/Info.plist 
 
 if [ $? != 0 ]; then
 	echo "ERROR: Could not patch Info.plist."
+	exit
+fi
+echo "Done."
+
+
+
+
+# Patch the bundle name
+echo "Patching InfoPlist.strings..."
+LANG=C sed -i '.bak' 's/CFBundleName/Xpwnd/g' $XPWND_PATH/Contents/Resources/English.lproj/InfoPlist.strings
+
+if [ $? != 0 ]; then
+	echo "ERROR: Could not patch InfoPlist.strings."
 	exit
 fi
 echo "Done."
@@ -78,19 +91,7 @@ echo "Done."
 # Patch App Icon 
 echo "Patching App Icon..."
 cp ./resources/Xpwnd.icns $XPWND_PATH/Contents/Resources/Xpwnd.icns
-
-if [ $? != 0 ]; then
-	echo "ERROR: Could not patch App Icon."
-	exit
-fi
-echo "Done."
-
-
-
-
-# Patch App Icon 
-echo "Patching App Icon..."
-cp ./resources/Xpwnd.icns $XPWND_PATH/Contents/Resources/Xpwnd.icns
+rm $XPWND_PATH/Contents/Resources/Xcode.icns
 
 if [ $? != 0 ]; then
 	echo "ERROR: Could not patch App Icon."
@@ -102,8 +103,8 @@ echo "Done."
 
 
 # Patch IDEWelcomeWindow.nib
-echo "Patching IDEWelcomWindow.nib...."
-cp ./resources/IDEKit/IDEWelcomeWindow.nib $XPWND_PATH/Contents/Frameworks/IDEKit.framework/Versions/A/Resources/
+echo "Patching IDEWelcomeWindow.nib...."
+cp ./resources/IDEKit/IDEWelcomeWindow.nib $XPWND_PATH/Contents/Frameworks/IDEKit.framework/Versions/A/Resources/IDEWelcomeWindow.nib
 
 if [ $? != 0 ]; then
 	echo "ERROR: Could not patch IDEWelcomeWindow.nib."
@@ -115,23 +116,20 @@ echo "Done."
 
 
 # TODO: I think we're missing like xpwndproj_Icon.icns, etc
-echo -ne "\nXpwnd initialization complete.\n"
-echo -ne "Beginning Full Transformation To Xpwnd.\n\n"
+echo -e "\nXpwnd initialization complete.\n"
+echo -e "Beginning Full Transformation To Xpwnd.\n\n"
 
 
-pwd 
+
 
 # Create iPhoneJailbreak Platform
 echo "Making iPhoneJailbreak Platform...."
 cp -r $XPWND_PATH/Contents/Developer/Platforms/iPhoneOS.platform $XPWND_PATH/Contents/Developer/Platforms/iPhoneJailbreak.platform
-
 if [ $? != 0 ]; then
 	echo "ERROR: Could not make iPhoneJailbreak Platform."
 	exit
 fi
 echo "Done."
-
-
 
 
 # Patch iPhoneJailbreak Platform
@@ -148,7 +146,7 @@ if [ $? != 0 ]; then
 	exit
 fi
 
-cp -r ./resources/Platforms/iPhoneJailbreak/Developer/Library/Xcode/Templates $XPWND_PATH/Contents/Developer/Platforms/iPhoneJailbreak.platform/Developer/Library/Xcode/Templates
+cp -r ./resources/Platforms/iPhoneJailbreak/Developer/Library/Xcode/Templates/Project\ Templates $XPWND_PATH/Contents/Developer/Platforms/iPhoneJailbreak.platform/Developer/Library/Xcode/Templates/Project\ Templates
 if [ $? != 0 ]; then
 	echo "ERROR: Could not patch iPhoneJailbreak Platform."
 	exit
@@ -185,7 +183,7 @@ if [ $? != 0 ]; then
 	exit
 fi
 
-cp -r ./resources/Platforms/iPhoneSecurity/Developer/Library/Xcode/Templates $XPWND_PATH/Contents/Developer/Platforms/iPhoneSecurity.platform/Developer/Library/Xcode/Templates
+cp -r ./resources/Platforms/iPhoneSecurity/Developer/Library/Xcode/Templates/Project\ Templates $XPWND_PATH/Contents/Developer/Platforms/iPhoneSecurity.platform/Developer/Library/Xcode/Templates/Project\ Templates
 if [ $? != 0 ]; then
 	echo "ERROR: Could not patch iPhoneSecurity Platform."
 	exit
@@ -197,25 +195,25 @@ echo "Done."
 
 # Remove Other Platforms (tvOS, watchOS, tv simulator, watch simulator
 echo "Removing unnecessary platforms..."
-rm -r $XPWND_PATH/Contents/Developer/Platforms/AppleTVOS.platform 
+rm -rf $XPWND_PATH/Contents/Developer/Platforms/AppleTVOS.platform 
 if [ $? != 0 ]; then
 	echo "ERROR: Could not remove AppleTVOS Platform."
 	exit
 fi
 
-rm -r $XPWND_PATH/Contents/Developer/Platforms/AppleTVSimulator.platform 
+rm -rf $XPWND_PATH/Contents/Developer/Platforms/AppleTVSimulator.platform 
 if [ $? != 0 ]; then
 	echo "ERROR: Could not remove AppleTVSimulator Platform."
 	exit
 fi
 
-rm -r $XPWND_PATH/Contents/Developer/Platforms/WatchOS.platform 
+rm -rf $XPWND_PATH/Contents/Developer/Platforms/WatchOS.platform 
 if [ $? != 0 ]; then
 	echo "ERROR: Could not remove WatchOS Platform."
 	exit
 fi
 
-rm -r $XPWND_PATH/Contents/Developer/Platforms/WatchSimulator.platform 
+rm -rf $XPWND_PATH/Contents/Developer/Platforms/WatchSimulator.platform 
 if [ $? != 0 ]; then
 	echo "ERROR: Could not remove WatchSimulator Platform."
 	exit
@@ -347,20 +345,30 @@ echo "Done."
 
 
 
-# Clean uo
-echo "Cleaning uo..."
-rm -r $XPWND_PATH/_MASReceipt
+# Clean up
+echo "Cleaning up..."
+rm -r $XPWND_PATH/Contents/_MASReceipt
 
 if [ $? != 0 ]; then
 	echo "ERROR: Could not remove Mac App Store Receipt. Continuing anyways..."
 	echo "   If you downloaded Xcode from developer.apple.com, then you can ignore this error."
 fi
+
+
+
+# Remove Applications
+echo "Removing unnecessary Applications..."
+rm -r $XPWND_PATH/Contents/Applications
+
+if [ $? != 0 ]; then
+	echo "ERROR: Failed to remove applications."
+fi
 echo "Done."
 
 
-# TODO: I think we're missing the xcspec or whatever it was that let us remov "iPhone" from the device list to stop device stealing
-echo -ne "\nXpwnd Transformation Complete.\n"
-echo -ne "Beginning Finalization.\n\n"
+# TODO: I think we're missing the xcspec or whatever it was that let us remove "iPhone" from the device list to stop device stealing
+echo -e "\nXpwnd Transformation Complete.\n"
+echo -e "Beginning Finalization.\n\n"
 
 
 
@@ -370,7 +378,7 @@ echo "Codesigning Xpwnd..."
 (IFS='
 '
 for x in `security find-identity -v -p codesigning`; do
-	if [[ $x == *"Mac Developer"* ]]; then
+	if [[ $x == *"Developer"* ]]; then
 		strip=${x:47}
 		id=${strip%\"*}
 		sudo codesign -fs "$id" $XPWND_PATH --deep
