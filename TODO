@@ -5,14 +5,12 @@
 
 
 -------- Build Script -------
-• Write direcly to files for moficiation rather than copy modded file (where possible)
 
 
 ----------- Xpwnd -----------
 • Remove duplicate file templates
 • Default to Legacy Build System
 • Change default derived data location
-• Change process name (we got this once in a very early version)
 • Either fix LD issues, or make links with explicit paths
 
 • Add tweak file templates
